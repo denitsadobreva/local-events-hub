@@ -1,5 +1,6 @@
 import { sql } from "../../lib/db";
 import type { Event } from "../../lib/types";
+import Link from "next/link";
 
 type EventPageProps = {
   params: { eventId: string };
@@ -20,10 +21,15 @@ export default async function EventPage({ params }: EventPageProps) {
   }
 
   return (
-    <div>
-      <h1>{event.title}</h1>
-      <p>{event.description}</p>
-      <p>{new Date(event.event_date).toLocaleDateString()}</p>
-    </div>
+    <>
+      <Link href="/events" className="text-purple-800 hover:text-purple-500">
+        &larr; Back to Events
+      </Link>
+      <div>
+        <h1>{event.title}</h1>
+        <p>{event.description}</p>
+        <p>{new Date(event.event_date).toLocaleDateString()}</p>
+      </div>
+    </>
   );
 }

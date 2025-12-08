@@ -8,8 +8,6 @@ export default async function EventsPage() {
     ORDER BY id DESC
   `;
 
-  console.log(events);
-
   return (
     <div>
       <h1>Events</h1>
