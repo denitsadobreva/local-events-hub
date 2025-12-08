@@ -11,20 +11,24 @@ export const LINKS = [
 
 export default function Nav() {
   const pathname = usePathname();
+  const activeLinkStyle = (href: string) =>
+    pathname === href ? "text-purple-900 font-semibold" : "text-purple-800";
+
   return (
     <nav>
-      <ul className="flex gap-4 text-purple-800">
+      <ul className="flex gap-4">
         {LINKS.map(({ href, label }) => {
           return (
-            <Link
-              key={href}
-              href={href}
-              className={`hover:text-purple-500 ${
-                pathname === href && "text-purple-300"
-              }`}
-            >
-              {label}
-            </Link>
+            <li key={href}>
+              <Link
+                href={href}
+                className={`transition-colors duration-200 hover:text-purple-500 ${activeLinkStyle(
+                  href
+                )}`}
+              >
+                {label}
+              </Link>
+            </li>
           );
         })}
       </ul>
