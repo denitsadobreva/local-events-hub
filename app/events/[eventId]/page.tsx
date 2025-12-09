@@ -43,15 +43,24 @@ export default async function EventPage({ params }: EventPageProps) {
         <p>{event.description}</p>
         <p>{new Date(event.event_date).toLocaleDateString()}</p>
       </div>
-      <form action={deleteEvent} className="mt-4">
-        <input type="hidden" name="eventId" value={event.id} />
-        <button
-          type="submit"
-          className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors duration-200 cursor-pointer"
+      <div className="flex gap-4">
+        <form action={deleteEvent} className="mt-4">
+          <input type="hidden" name="eventId" value={event.id} />
+          <button
+            type="submit"
+            className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors duration-200 cursor-pointer"
+          >
+            Delete Event
+          </button>
+        </form>
+
+        <Link
+          href={`/events/${event.id}/edit`}
+          className="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors duration-200 cursor-pointer"
         >
-          Delete Event
-        </button>
-      </form>
+          Edit Event
+        </Link>
+      </div>
     </>
   );
 }
