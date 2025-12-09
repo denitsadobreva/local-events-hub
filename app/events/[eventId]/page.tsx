@@ -1,23 +1,11 @@
-"use server";
-
 import { sql } from "../../lib/db";
 import type { Event } from "../../lib/types";
 import Link from "next/link";
-import { redirect } from "next/navigation";
+import DeleteButton from "@/app/ui/components/DeleteButton";
 
 type EventPageProps = {
   params: Promise<{ eventId: string }>;
 };
-
-export async function deleteEvent(formData: FormData) {
-  const eventId = formData.get("eventId") as string;
-  await sql`
-    DELETE FROM events
-    WHERE id = ${eventId}
-  `;
-
-  redirect("/events");
-}
 
 export default async function EventPage({ params }: EventPageProps) {
   const { eventId } = await params;
@@ -44,15 +32,7 @@ export default async function EventPage({ params }: EventPageProps) {
         <p>{new Date(event.event_date).toLocaleDateString()}</p>
       </div>
       <div className="flex gap-4">
-        <form action={deleteEvent} className="mt-4">
-          <input type="hidden" name="eventId" value={event.id} />
-          <button
-            type="submit"
-            className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors duration-200 cursor-pointer"
-          >
-            Delete Event
-          </button>
-        </form>
+        <DeleteButton eventId={event.id.toString()} />
 
         <Link
           href={`/events/${event.id}/edit`}

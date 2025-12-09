@@ -1,21 +1,4 @@
-"use server";
-
-import { sql } from "../../lib/db";
-import { redirect } from "next/navigation";
-
-export async function addNewEvent(formData: FormData) {
-  const title = formData.get("title") as string;
-  const description = formData.get("description") as string;
-  const event_date = formData.get("event_date") as string;
-  const newEvent =
-    await sql`INSERT INTO events (title, description, event_date) VALUES (${title}, ${description}, ${event_date}) RETURNING *`;
-  if (newEvent.length === 0) {
-    throw new Error("Failed to add new event");
-  } else {
-    console.log("New event added:", newEvent);
-    redirect("/events");
-  }
-}
+import { addNewEvent } from "../actions";
 
 export default async function NewEventPage() {
   return (

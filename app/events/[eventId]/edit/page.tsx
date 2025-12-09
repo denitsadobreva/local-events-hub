@@ -1,21 +1,6 @@
-"use server";
-
 import type { Event } from "../../../lib/types";
 import { sql } from "../../../lib/db";
-import { redirect } from "next/navigation";
-
-export async function editEvent(formData: FormData) {
-  const eventId = formData.get("eventId") as string;
-  const title = formData.get("title") as string;
-  const description = formData.get("description") as string;
-  const event_date = formData.get("event_date") as string;
-  await sql`
-    UPDATE events
-    SET title = ${title}, description = ${description}, event_date = ${event_date}
-    WHERE id = ${eventId}
-  `;
-  redirect(`/events/${eventId}`);
-}
+import { editEvent } from "../../actions";
 
 export default async function EditPage({
   params,
