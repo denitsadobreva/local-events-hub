@@ -10,7 +10,7 @@ export default function DeleteButton({ eventId }: { eventId: string }) {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors"
+        className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 cursor-pointer transition-colors"
       >
         Delete Event
       </button>
@@ -25,7 +25,7 @@ export default function DeleteButton({ eventId }: { eventId: string }) {
             <div className="flex justify-end gap-4">
               <button
                 onClick={() => setOpen(false)}
-                className="px-4 py-2 rounded border"
+                className="px-4 py-2 bg-gray-200 hover:bg-gray-300 transition-colors rounded cursor-pointer"
               >
                 Cancel
               </button>
@@ -34,7 +34,7 @@ export default function DeleteButton({ eventId }: { eventId: string }) {
                 <input type="hidden" name="eventId" value={eventId} />
                 <button
                   type="submit"
-                  className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
+                  className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 cursor-pointer transition-colors"
                 >
                   Delete
                 </button>

@@ -22,30 +22,41 @@ export default async function EditPage({
   }
 
   return (
-    <div>
-      <h1>Edit Event</h1>
-      <form action={editEvent}>
-        <div>
-          <label htmlFor="title">Title:</label>
+    <div className="mx-auto max-w-7xl px-6 py-8 flex flex-col gap-6 justify-center items-center">
+      <h1 className="font-semibold text-2xl text-gray-800">Edit Event</h1>
+      <form
+        action={editEvent}
+        className="flex flex-col gap-6 max-w-md w-full p-8 border border-gray-300 bg-white shadow-lg rounded-xl"
+      >
+        <div className="flex flex-col">
+          <label htmlFor="title" className="text-sm text-gray-600">
+            Title:
+          </label>
           <input
             type="text"
             id="title"
             name="title"
             defaultValue={event.title}
             required
+            className="rounded-md px-3 py-1.5 outline-1 outline-gray-300 text-gray-900 mt-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
           />
         </div>
-        <div>
-          <label htmlFor="description">Description:</label>
+        <div className="flex flex-col">
+          <label htmlFor="description" className="text-sm text-gray-600">
+            Description:
+          </label>
           <textarea
             id="description"
             name="description"
             defaultValue={event.description || ""}
             required
+            className="rounded-md px-3 py-1.5 outline-1 outline-gray-300 text-gray-900 mt-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
           ></textarea>
         </div>
-        <div>
-          <label htmlFor="event_date">Event Date:</label>
+        <div className="flex flex-col">
+          <label htmlFor="event_date" className="text-sm text-gray-600">
+            Event Date:
+          </label>
           <input
             type="date"
             id="event_date"
@@ -54,10 +65,16 @@ export default async function EditPage({
               new Date(event.event_date).toISOString().split("T")[0]
             }
             required
+            className="rounded-md px-3 py-1.5 outline-1 outline-gray-300 text-gray-900 mt-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
           />
         </div>
         <input type="hidden" name="eventId" value={event.id} />
-        <button type="submit">Save Changes</button>
+        <button
+          type="submit"
+          className="cursor-pointer mt-4 inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors duration-200 "
+        >
+          Save Changes
+        </button>
       </form>
     </div>
   );
