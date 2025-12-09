@@ -12,7 +12,7 @@ export const LINKS = [
 export default function Nav() {
   const pathname = usePathname();
   const activeLinkStyle = (href: string) =>
-    pathname === href ? "text-purple-900 font-semibold" : "text-purple-800";
+    pathname === href ? "text-gray-900 font-semibold" : "text-gray-800";
 
   return (
     <nav>
@@ -22,7 +22,7 @@ export default function Nav() {
             <li key={href}>
               <Link
                 href={href}
-                className={`transition-colors duration-200 hover:text-purple-500 ${activeLinkStyle(
+                className={`transition-colors duration-200 hover:text-gray-600 ${activeLinkStyle(
                   href
                 )}`}
               >
