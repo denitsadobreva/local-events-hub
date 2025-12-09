@@ -17,7 +17,7 @@ export default function DeleteButton({ eventId }: { eventId: string }) {
 
       {open && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
-          <div className="bg-white p-6 rounded shadow-md max-w-sm w-full">
+          <div className="bg-white p-6 rounded shadow-md max-w-sm w-full  border-gray-300 bg-white shadow-lg rounded-xl">
             <h2 className="text-lg font-semibold mb-4">
               Are you sure you want to delete this event?
             </h2>
