@@ -1,6 +1,7 @@
 import type { Event } from "../../../lib/types";
 import { sql } from "../../../lib/db";
 import { editEvent } from "../../actions";
+import { getEventById } from "../../../lib/events";
 
 export default async function EditPage({
   params,
@@ -9,13 +10,7 @@ export default async function EditPage({
 }) {
   const { eventId } = await params;
 
-  const events = (await sql`
-        SELECT *
-        FROM events
-        WHERE id = ${eventId}
-      `) as Event[];
-
-  const event = events.at(0) as Event;
+  const event = (await getEventById(eventId)) as Event;
 
   if (!event) {
     return <div>Event not found</div>;
