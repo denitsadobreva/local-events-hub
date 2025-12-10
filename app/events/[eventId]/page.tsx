@@ -23,12 +23,6 @@ export default async function EventPage({ params }: EventPageProps) {
 
   return (
     <>
-      <Link
-        href="/events"
-        className="text-gray-800 hover:text-gray-600 ml-10 mb-4"
-      >
-        &larr; Back to All Events
-      </Link>
       <div className="mx-auto max-w-7xl px-6 py-8 flex flex-col gap-6 justify-center items-center">
         <h1 className="font-semibold text-2xl text-gray-800">{event.title}</h1>
         <p>{event.description}</p>
