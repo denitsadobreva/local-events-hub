@@ -1,13 +1,13 @@
 "use server";
-import { sql } from "../lib/db";
 import { redirect } from "next/navigation";
+import { createEvent, updateEvent, deleteEventById } from "../lib/events";
 
 export async function addNewEvent(formData: FormData) {
   const title = formData.get("title") as string;
   const description = formData.get("description") as string;
   const event_date = formData.get("event_date") as string;
-  const newEvent =
-    await sql`INSERT INTO events (title, description, event_date) VALUES (${title}, ${description}, ${event_date}) RETURNING *`;
+
+  const newEvent = await createEvent(title, description, event_date);
   if (newEvent.length === 0) {
     throw new Error("Failed to add new event");
   } else {
@@ -18,10 +18,7 @@ export async function addNewEvent(formData: FormData) {
 
 export async function deleteEvent(formData: FormData) {
   const eventId = formData.get("eventId") as string;
-  await sql`
-    DELETE FROM events
-    WHERE id = ${eventId}
-  `;
+  await deleteEventById(eventId);
 
   redirect("/events");
 }
@@ -31,10 +28,6 @@ export async function editEvent(formData: FormData) {
   const title = formData.get("title") as string;
   const description = formData.get("description") as string;
   const event_date = formData.get("event_date") as string;
-  await sql`
-    UPDATE events
-    SET title = ${title}, description = ${description}, event_date = ${event_date}
-    WHERE id = ${eventId}
-  `;
+  await updateEvent(eventId, title, description, event_date);
   redirect(`/events/${eventId}`);
 }

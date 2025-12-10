@@ -1,12 +1,8 @@
-import { sql } from "../lib/db";
 import Link from "next/link";
+import { getAllEvents } from "../lib/events";
 
 export default async function EventsPage() {
-  const events = await sql`
-    SELECT id, title, description, event_date 
-    FROM events 
-    ORDER BY id DESC
-  `;
+  const events = await getAllEvents();
 
   return (
     <div className="mx-auto max-w-7xl px-6 py-8 flex flex-col gap-6 justify-center items-center">

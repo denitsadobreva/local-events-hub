@@ -1,7 +1,7 @@
-import { sql } from "../../lib/db";
-import type { Event } from "../../lib/types";
 import Link from "next/link";
 import DeleteButton from "@/app/ui/components/DeleteButton";
+import { getEventById } from "@/app/lib/events";
+import type { Event } from "@/app/lib/types";
 
 type EventPageProps = {
   params: Promise<{ eventId: string }>;
@@ -9,13 +9,7 @@ type EventPageProps = {
 
 export default async function EventPage({ params }: EventPageProps) {
   const { eventId } = await params;
-  const events = (await sql`
-    SELECT *
-    FROM events
-    WHERE id = ${eventId}
-  `) as Event[];
-
-  const event = events.at(0);
+  const event = (await getEventById(eventId)) as Event;
 
   if (!event) {
     return <div>Event not found</div>;
