@@ -4,6 +4,15 @@ import { getAllEvents } from "../lib/events";
 export default async function EventsPage() {
   const events = await getAllEvents();
 
+  if (events.length === 0) {
+    return (
+      <div className="mx-auto max-w-7xl px-6 py-8 flex flex-col gap-6 justify-center items-center">
+        <h1 className="font-semibold text-2xl text-gray-800">Events</h1>
+        <p>No events found.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="mx-auto max-w-7xl px-6 py-8 flex flex-col gap-6 justify-center items-center">
       <h1 className="font-semibold text-2xl text-gray-800">Events</h1>

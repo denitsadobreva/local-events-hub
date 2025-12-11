@@ -13,7 +13,11 @@ export default async function EditPage({
   const event = (await getEventById(eventId)) as Event;
 
   if (!event) {
-    return <div>Event not found</div>;
+    return (
+      <div className="mx-auto max-w-7xl px-6 py-8 flex justify-center items-center">
+        Event not found
+      </div>
+    );
   }
 
   return (
