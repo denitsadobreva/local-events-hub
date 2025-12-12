@@ -45,3 +45,13 @@ export const deleteEventById = async (eventId: string) => {
     WHERE id = ${eventId}
   `;
 };
+
+export const searchEvents = async (query: string) => {
+  const searchString = `%${query}%`;
+  const events = await sql`
+    SELECT * FROM events
+    WHERE title ILIKE ${searchString} OR description ILIKE ${searchString}
+    ORDER BY event_date DESC
+  `;
+  return events;
+};
