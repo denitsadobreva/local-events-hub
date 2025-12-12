@@ -47,9 +47,9 @@ export const deleteEventById = async (eventId: string) => {
 };
 
 export const filterEvents = async (
-  query: string = "",
-  from: string,
-  to: string
+  query: string | undefined,
+  from: string | undefined,
+  to: string | undefined
 ) => {
   const hasQuery = !!(query && query.trim().length > 0);
   const hasFrom = !!(from && from.trim().length > 0);

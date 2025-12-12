@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getAllEvents, filterEvents } from "../lib/events";
 import SearchBar from "../ui/components/SearchBar";
 import Filter from "../ui/components/Filter";
+import { normalizeParam } from "../lib/utils/normalizeParam";
 
 export default async function EventsPage({
   params,
@@ -19,7 +20,9 @@ export default async function EventsPage({
   console.log("Search Params:", resolvedSearch);
 
   let events = [];
-  const { query, from, to } = resolvedSearch;
+  const query = normalizeParam(resolvedSearch.query);
+  const from = normalizeParam(resolvedSearch.from);
+  const to = normalizeParam(resolvedSearch.to);
   if (query || from || to) {
     events = await filterEvents(query, from, to);
   } else {
