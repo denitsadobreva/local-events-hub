@@ -46,12 +46,36 @@ export const deleteEventById = async (eventId: string) => {
   `;
 };
 
-export const searchEvents = async (query: string) => {
-  const searchString = `%${query}%`;
+export const filterEvents = async (
+  query: string = "",
+  from: string,
+  to: string
+) => {
+  const hasQuery = !!(query && query.trim().length > 0);
+  const hasFrom = !!(from && from.trim().length > 0);
+  const hasTo = !!(to && to.trim().length > 0);
+
+  const searchString = hasQuery ? `%${query}%` : "";
+
   const events = await sql`
-    SELECT * FROM events
-    WHERE title ILIKE ${searchString} OR description ILIKE ${searchString}
+    SELECT *
+    FROM events
+    WHERE
+      (
+        ${hasQuery} = false
+        OR title ILIKE ${searchString}
+        OR description ILIKE ${searchString}
+      )
+      AND (
+        ${hasFrom} = false
+        OR event_date >= ${from}
+      )
+      AND (
+        ${hasTo} = false
+        OR event_date <= ${to}
+      )
     ORDER BY event_date DESC
   `;
+
   return events;
 };

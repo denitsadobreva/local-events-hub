@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { getAllEvents, searchEvents } from "../lib/events";
+import { getAllEvents, filterEvents } from "../lib/events";
 import SearchBar from "../ui/components/SearchBar";
+import Filter from "../ui/components/Filter";
 
 export default async function EventsPage({
   params,
@@ -18,8 +19,9 @@ export default async function EventsPage({
   console.log("Search Params:", resolvedSearch);
 
   let events = [];
-  if (resolvedSearch.query) {
-    events = await searchEvents(resolvedSearch.query as string);
+  const { query, from, to } = resolvedSearch;
+  if (query || from || to) {
+    events = await filterEvents(query, from, to);
   } else {
     events = await getAllEvents();
   }
@@ -28,6 +30,7 @@ export default async function EventsPage({
     <div className="mx-auto max-w-7xl px-6 py-8 flex flex-col gap-6 justify-center items-center">
       <h1 className="font-semibold text-2xl text-gray-800">Events</h1>
       <SearchBar />
+      <Filter />
       {events.length === 0 ? (
         <p>No events found.</p>
       ) : (

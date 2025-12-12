@@ -6,9 +6,21 @@ import { debounce } from "@/app/lib/utils/debounce";
 export default function SearchBar() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const fromDate = searchParams.get("from") || "";
+  const toDate = searchParams.get("to") || "";
+
+  const getQueryString = (query: string) => {
+    const params = new URLSearchParams();
+    if (query) params.append("query", query);
+    if (fromDate) params.append("from", fromDate);
+    if (toDate) params.append("to", toDate);
+    const queryString = params.toString();
+    return queryString ? `?${queryString}` : "";
+  };
+
   const debouncedFn = debounce((query: string) => {
-    router.push(`/events?query=${query.toString()}`);
-  }, 1000);
+    router.push(`/events${getQueryString(query)}`);
+  }, 300);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value || "";
