@@ -24,27 +24,46 @@ export default function Filter() {
     router.push(`${pathname}${getQueryString()}`);
   };
 
+  const showPicker = (e: any) => {
+    e.target.showPicker();
+  };
+
   return (
     <div>
-      <h2>Filter Component</h2>
-      <form onSubmit={handleFilterSubmit}>
-        <label htmlFor="from">Start Date:</label>
+      <form
+        onSubmit={handleFilterSubmit}
+        className="w-full flex justify-between items-center gap-4"
+      >
+        <label htmlFor="from" className="flex-shrink-0">
+          Start Date:
+        </label>
         <input
           type="date"
           name="from"
           defaultValue={fromDate}
           max={toDate}
           onChange={(e) => setFromDate(e.target.value)}
+          onClick={showPicker}
+          className="cursor-pointer w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
-        <label htmlFor="to">End Date:</label>
+        <label htmlFor="to" className="flex-shrink-0">
+          End Date:
+        </label>
         <input
           type="date"
           name="to"
           defaultValue={toDate}
           min={fromDate}
           onChange={(e) => setToDate(e.target.value)}
+          onClick={showPicker}
+          className="cursor-pointer w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
-        <button type="submit">Apply Filter</button>
+        <button
+          type="submit"
+          className="flex-shrink-0 px-4 py-2 bg-gray-200 hover:bg-gray-300 transition-colors rounded cursor-pointer"
+        >
+          Apply Filter
+        </button>
       </form>
     </div>
   );
