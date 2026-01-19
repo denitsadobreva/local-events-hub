@@ -1,7 +1,7 @@
 import Link from "next/link";
-import DeleteButton from "@/app/components/DeleteButton";
-import { getEventById } from "@/app/lib/events";
-import type { Event } from "@/app/lib/types";
+import DeleteButton from "@/components/DeleteButton";
+import { getEventById } from "@/lib/events";
+import type { Event } from "@/lib/types";
 
 type EventPageProps = {
   params: Promise<{ eventId: string }>;

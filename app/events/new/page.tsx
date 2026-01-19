@@ -1,4 +1,4 @@
-import { addNewEvent } from "../actions";
+import { addNewEvent } from "@/actions/events";
 
 export default async function NewEventPage() {
   return (

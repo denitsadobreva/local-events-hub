@@ -1,6 +1,6 @@
 "use server";
 import { redirect } from "next/navigation";
-import { createEvent, updateEvent, deleteEventById } from "../../lib/events";
+import { createEvent, updateEvent, deleteEventById } from "@/lib/events";
 
 export async function addNewEvent(formData: FormData) {
   const title = formData.get("title") as string;

@@ -1,7 +1,7 @@
 import "./globals.css";
-import { inter } from "./fonts";
+import { inter } from "@/public/fonts";
 import Link from "next/link";
-import Nav from "./components/Nav";
+import Nav from "@/components/Nav";
 
 export default function RootLayout({
   children,

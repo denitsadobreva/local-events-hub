@@ -1,4 +1,4 @@
-import EditEventSkeleton from "@/app/components/EditEventSkeleton";
+import EditEventSkeleton from "@/components/EditEventSkeleton";
 
 export default function Loading() {
   return <EditEventSkeleton />;

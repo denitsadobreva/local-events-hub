@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { debounce } from "@/app/lib/utils/debounce";
+import { debounce } from "@/lib/utils/debounce";
 
 export default function SearchBar() {
   const router = useRouter();

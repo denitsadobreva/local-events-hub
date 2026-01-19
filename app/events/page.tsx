@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { getAllEvents, filterEvents } from "../../lib/events";
-import SearchBar from "../../components/SearchBar";
-import Filter from "../../components/Filter";
-import { normalizeParam } from "../../lib/utils/normalizeParam";
-import { EVENTS_PER_PAGE } from "../../lib/constants";
-import Pagination from "../../components/Pagination";
+import { getAllEvents, filterEvents } from "@/lib/events";
+import SearchBar from "@/components/SearchBar";
+import Filter from "@/components/Filter";
+import { normalizeParam } from "@/lib/utils/normalizeParam";
+import { EVENTS_PER_PAGE } from "@/lib/constants";
+import Pagination from "@/components/Pagination";
 
 export default async function EventsPage({
   params,
