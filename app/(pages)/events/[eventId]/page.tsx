@@ -1,5 +1,5 @@
 import Link from "next/link";
-import DeleteButton from "@/app/ui/components/DeleteButton";
+import DeleteButton from "@/app/components/DeleteButton";
 import { getEventById } from "@/app/lib/events";
 import type { Event } from "@/app/lib/types";
 

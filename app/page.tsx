@@ -1,4 +1,4 @@
-import { lusitana } from "./ui/fonts";
+import { lusitana } from "./fonts";
 import Link from "next/link";
 
 export default function Home() {

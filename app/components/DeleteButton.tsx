@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { deleteEvent } from "../../events/actions";
+import { deleteEvent } from "../pages/events/actions";
 
 export default function DeleteButton({ eventId }: { eventId: string }) {
   const [open, setOpen] = useState(false);

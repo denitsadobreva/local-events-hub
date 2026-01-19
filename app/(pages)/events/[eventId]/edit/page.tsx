@@ -1,7 +1,7 @@
-import type { Event } from "../../../lib/types";
-import { sql } from "../../../lib/db";
+import type { Event } from "../../../../lib/types";
+import { sql } from "../../../../lib/db";
 import { editEvent } from "../../actions";
-import { getEventById } from "../../../lib/events";
+import { getEventById } from "../../../../lib/events";
 
 export default async function EditPage({
   params,

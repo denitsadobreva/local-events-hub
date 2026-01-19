@@ -1,4 +1,4 @@
-import EventsSkeleton from "../ui/components/EventsSkeleton";
+import EventsSkeleton from "../../components/EventsSkeleton";
 
 export default function Loading() {
   return (
