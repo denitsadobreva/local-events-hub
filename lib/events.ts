@@ -1,7 +1,13 @@
 import { sql } from "./db";
+import { prisma } from "@/lib/prisma";
 
 export const getAllEvents = async () => {
-  const events = await sql`SELECT * FROM events ORDER BY event_date DESC`;
+  const events = await prisma.events.findMany({
+    orderBy: {
+      event_date: "desc",
+    },
+  });
+  //const events = await sql`SELECT * FROM events ORDER BY event_date DESC`;
   return events;
 };
 
@@ -16,7 +22,7 @@ export const getEventById = async (eventId: string) => {
 export const createEvent = async (
   title: string,
   description: string,
-  event_date: string
+  event_date: string,
 ) => {
   const newEvent = await sql`
     INSERT INTO events (title, description, event_date)
@@ -30,7 +36,7 @@ export const updateEvent = async (
   eventId: string,
   title: string,
   description: string,
-  event_date: string
+  event_date: string,
 ) => {
   await sql`
     UPDATE events
@@ -49,7 +55,7 @@ export const deleteEventById = async (eventId: string) => {
 export const filterEvents = async (
   query: string | undefined,
   from: string | undefined,
-  to: string | undefined
+  to: string | undefined,
 ) => {
   const hasQuery = !!(query && query.trim().length > 0);
   const hasFrom = !!(from && from.trim().length > 0);
