@@ -1,9 +1,9 @@
 import { prisma } from "@/lib/db/prisma";
 
 export const getAllEvents = async () => {
-  const events = await prisma.events.findMany({
+  const events = await prisma.event.findMany({
     orderBy: {
-      event_date: "desc",
+      eventDate: "desc",
     },
   });
   return events;

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import DeleteButton from "@/components/DeleteButton";
 import { getEventById } from "@/lib/db/events";
-import type { Event } from "@/lib/types/types";
+import { Event } from "@prisma/client";
 
 type EventPageProps = {
   params: Promise<{ eventId: string }>;
@@ -24,7 +24,7 @@ export default async function EventPage({ params }: EventPageProps) {
       <div className="mx-auto max-w-7xl px-6 py-8 flex flex-col gap-6 justify-center items-center">
         <h1 className="font-semibold text-2xl text-gray-800">{event.title}</h1>
         <p>{event.description}</p>
-        <p>{new Date(event.event_date).toLocaleDateString()}</p>
+        <p>{new Date(event.eventDate).toLocaleDateString()}</p>
       </div>
       <div className="flex gap-4 justify-center items-center">
         <DeleteButton eventId={event.id.toString()} />

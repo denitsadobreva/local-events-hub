@@ -25,16 +25,16 @@ export const filterEvents = async (
   }
 
   if (from?.trim() || to?.trim()) {
-    where.event_date = {
+    where.eventDate = {
       ...(from && { gte: new Date(from) }),
       ...(to && { lte: new Date(to) }),
     };
   }
 
-  return prisma.events.findMany({
+  return prisma.event.findMany({
     where,
     orderBy: {
-      event_date: "desc",
+      eventDate: "desc",
     },
   });
 };

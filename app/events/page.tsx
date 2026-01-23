@@ -3,7 +3,7 @@ import SearchBar from "@/components/SearchBar";
 import Filter from "@/components/Filter";
 import Pagination from "@/components/Pagination";
 import { useEvents } from "@/hooks/useEvents";
-import type { events as Event } from "@prisma/client";
+import type { Event } from "@prisma/client";
 
 type UseEventsResult = {
   events: Event[];
@@ -49,7 +49,7 @@ export default async function EventsPage({
                 </Link>
                 <p>{event.description}</p>
                 <p className="text-sm text-gray-600">
-                  Date: {new Date(event.event_date).toLocaleDateString()}
+                  Date: {new Date(event.eventDate).toLocaleDateString()}
                 </p>
               </li>
             ))}

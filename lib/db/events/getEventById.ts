@@ -4,7 +4,7 @@ import { parseId } from "@/lib/utils";
 export const getEventById = async (eventId: string) => {
   const id = parseId(eventId, "Event");
 
-  const event = await prisma.events.findUnique({
+  const event = await prisma.event.findUnique({
     where: {
       id,
     },

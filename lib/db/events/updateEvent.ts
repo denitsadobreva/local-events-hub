@@ -9,14 +9,14 @@ export const updateEvent = async (
 ) => {
   const id = parseId(eventId, "Event");
 
-  const updatedEvent = await prisma.events.update({
+  const updatedEvent = await prisma.event.update({
     where: {
       id,
     },
     data: {
       title,
       description,
-      event_date: new Date(eventDate),
+      eventDate: new Date(eventDate),
     },
   });
 

@@ -1,4 +1,3 @@
-import type { Event } from "@/lib/types/types";
 import { editEvent } from "@/actions/events";
 import { getEventById } from "@/lib/db/events";
 
@@ -9,7 +8,7 @@ export default async function EditPage({
 }) {
   const { eventId } = await params;
 
-  const event = (await getEventById(eventId)) as Event;
+  const event = await getEventById(eventId);
 
   if (!event) {
     return (
@@ -59,9 +58,7 @@ export default async function EditPage({
             type="date"
             id="event_date"
             name="event_date"
-            defaultValue={
-              new Date(event.event_date).toISOString().split("T")[0]
-            }
+            defaultValue={new Date(event.eventDate).toISOString().split("T")[0]}
             required
             className="rounded-md px-3 py-1.5 outline-1 outline-gray-300 text-gray-900 mt-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
           />

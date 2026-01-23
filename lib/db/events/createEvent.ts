@@ -5,11 +5,11 @@ export const createEvent = async (
   description: string,
   eventDate: string,
 ) => {
-  const newEvent = await prisma.events.create({
+  const newEvent = await prisma.event.create({
     data: {
       title,
       description,
-      event_date: new Date(eventDate),
+      eventDate: new Date(eventDate),
     },
   });
 

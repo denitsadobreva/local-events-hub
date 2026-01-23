@@ -4,7 +4,7 @@ import { parseId } from "@/lib/utils";
 export const deleteEventById = async (eventId: string) => {
   const id = parseId(eventId, "Event");
 
-  await prisma.events.delete({
+  await prisma.event.delete({
     where: {
       id,
     },

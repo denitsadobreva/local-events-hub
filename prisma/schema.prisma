@@ -6,9 +6,11 @@ datasource db {
   provider = "postgresql"
 }
 
-model events {
+model Event {
   id          Int      @id @default(autoincrement())
   title       String
   description String?
-  event_date  DateTime @db.Date
+  eventDate   DateTime @map("event_date")
+
+  @@map("events")
 }

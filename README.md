@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Local Events Hub
+
+## Overview
+
+Local Events Hub is a full-stack web application for browsing, creating, editing, and managing local events.
+Users can search events by keyword and filter them by date range.
+The project is built as a learning and portfolio project, with a focus on clean architecture, modern Next.js patterns, and a well-structured data layer.
+
+## Features
+
+- View a list of events
+- Search events by title or description
+- Filter events by date range
+- Create new events
+- Edit existing events
+- Delete events
+- Server-side data handling with Prisma ORM
+
+## Tech Stack
+
+- Next.js (App Router)
+- React
+- TypeScript
+- Prisma ORM
+- PostgreSQL (Neon)
+- Tailwind CSS
 
 ## Getting Started
 
-First, run the development server:
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/your-username/local-events-hub.git
+cd local-events-hub
+npm install
+```
+
+Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open the application in your browser
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Usage
 
-## Learn More
+- Browse the list of events on the main page
+- Use the search input to filter events by title or description
+- Use the date filters to narrow results by date range
+- Click on an event to edit or delete it
+- Create new events using the provided form
 
-To learn more about Next.js, take a look at the following resources:
+## Future Improvements
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Authentication and user roles
+- Improved form validation
+- Image upload for events
