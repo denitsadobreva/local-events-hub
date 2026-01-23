@@ -3,6 +3,16 @@ import SearchBar from "@/components/SearchBar";
 import Filter from "@/components/Filter";
 import Pagination from "@/components/Pagination";
 import { useEvents } from "@/hooks/useEvents";
+import type { events as Event } from "@prisma/client";
+
+type UseEventsResult = {
+  events: Event[];
+  pagination: {
+    currentPage: number;
+    totalPages: number;
+    totalItems: number;
+  };
+};
 
 export default async function EventsPage({
   params,
@@ -15,7 +25,8 @@ export default async function EventsPage({
     params,
     searchParams,
   ]);
-  const { events, pagination } = await useEvents(resolvedSearch);
+  const { events, pagination }: UseEventsResult =
+    await useEvents(resolvedSearch);
 
   return (
     <div className="mx-auto max-w-7xl px-6 py-8 flex flex-col gap-6 justify-center items-center">

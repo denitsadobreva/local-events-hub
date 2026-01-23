@@ -1,5 +1,5 @@
-import { filterEvents, getAllEvents } from "@/lib/events";
-import { EVENTS_PER_PAGE } from "@/lib/constants";
+import { filterEvents, getAllEvents } from "@/lib/db/events";
+import { EVENTS_PER_PAGE } from "@/lib/config/constants";
 
 type SearchParams = {
   query?: string | string[];

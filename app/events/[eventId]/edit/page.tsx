@@ -1,6 +1,6 @@
-import type { Event } from "@/lib/types";
+import type { Event } from "@/lib/types/types";
 import { editEvent } from "@/actions/events";
-import { getEventById } from "@/lib/events";
+import { getEventById } from "@/lib/db/events";
 
 export default async function EditPage({
   params,
