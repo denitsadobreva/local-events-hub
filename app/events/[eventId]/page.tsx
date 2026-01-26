@@ -2,6 +2,7 @@ import Link from "next/link";
 import DeleteButton from "@/components/DeleteButton";
 import { getEventById } from "@/lib/db/events";
 import type { Event } from "@prisma/client";
+import { parseId } from "@/lib/utils";
 
 type EventPageProps = {
   params: Promise<{ eventId: string }>;
@@ -9,7 +10,7 @@ type EventPageProps = {
 
 export default async function EventPage({ params }: EventPageProps) {
   const { eventId } = await params;
-  const event = (await getEventById(eventId)) as Event;
+  const event = await getEventById(parseId(eventId, "Event"));
 
   if (!event) {
     return (

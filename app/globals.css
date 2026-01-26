@@ -5,3 +5,7 @@
     transform: translateX(100%);
   }
 }
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
