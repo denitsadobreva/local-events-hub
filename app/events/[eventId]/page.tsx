@@ -1,7 +1,6 @@
 import Link from "next/link";
 import DeleteButton from "@/components/DeleteButton";
 import { getEventById } from "@/lib/db/events";
-import type { Event } from "@prisma/client";
 import { parseId } from "@/lib/utils";
 
 type EventPageProps = {
