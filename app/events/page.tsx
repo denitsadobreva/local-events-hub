@@ -3,7 +3,7 @@ import SearchBar from "@/components/SearchBar";
 import Filter from "@/components/Filter";
 import Pagination from "@/components/Pagination";
 import { useEvents } from "@/hooks/useEvents";
-import type { Event } from "@prisma/client";
+import type { Event } from "@/lib/types";
 
 type UseEventsResult = {
   events: Event[];
