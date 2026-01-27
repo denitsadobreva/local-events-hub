@@ -32,13 +32,13 @@ export default async function NewEventPage() {
           ></textarea>
         </div>
         <div className="flex flex-col">
-          <label htmlFor="event_date" className="text-sm text-gray-600">
+          <label htmlFor="eventDate" className="text-sm text-gray-600">
             Event Date:
           </label>
           <input
             type="date"
-            id="event_date"
-            name="event_date"
+            id="eventDate"
+            name="eventDate"
             required
             className="rounded-md px-3 py-1.5 outline-1 outline-gray-300 text-gray-900 mt-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
           />

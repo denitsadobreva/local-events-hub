@@ -1,3 +1,5 @@
+export const runtime = "nodejs";
+
 import "./globals.css";
 import { inter } from "@/public/fonts";
 import Link from "next/link";
