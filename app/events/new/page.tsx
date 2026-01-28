@@ -1,5 +1,5 @@
 import { addNewEvent } from "@/actions/events";
-import { Button } from "@/components/form";
+import { Button, Input, Textarea } from "@/components/form";
 
 export default async function NewEventPage() {
   return (
@@ -9,41 +9,24 @@ export default async function NewEventPage() {
         action={addNewEvent}
         className="flex flex-col gap-6 max-w-md w-full p-8 border border-gray-300 bg-white shadow-lg rounded-xl "
       >
-        <div className="flex flex-col">
-          <label htmlFor="title" className="text-sm text-gray-600">
-            Title:
-          </label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            required
-            className="rounded-md px-3 py-1.5 outline-1 outline-gray-300 text-gray-900 mt-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-          />
-        </div>
-        <div className="flex flex-col">
-          <label htmlFor="description" className="text-sm text-gray-600">
-            Description:
-          </label>
-          <textarea
-            id="description"
-            name="description"
-            required
-            className="rounded-md px-3 py-1.5 outline-1 outline-gray-300 text-gray-900 mt-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-          ></textarea>
-        </div>
-        <div className="flex flex-col">
-          <label htmlFor="eventDate" className="text-sm text-gray-600">
-            Event Date:
-          </label>
-          <input
-            type="date"
-            id="eventDate"
-            name="eventDate"
-            required
-            className="rounded-md px-3 py-1.5 outline-1 outline-gray-300 text-gray-900 mt-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-          />
-        </div>
+        <Input label="Title:" name="title" type="text" id="title" required />
+
+        <Textarea
+          label="Description:"
+          name="description"
+          id="description"
+          required
+        />
+
+        <Input
+          label="Event Date:"
+          name="eventDate"
+          type="date"
+          id="eventDate"
+          required
+          className="cursor-pointer"
+        />
+
         <Button type="submit" variant="primary">
           Add Event
         </Button>

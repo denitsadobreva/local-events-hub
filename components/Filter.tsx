@@ -1,6 +1,7 @@
 "use client";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { useState } from "react";
+import { Input, Button } from "./form";
 
 export default function Filter() {
   const router = useRouter();
@@ -24,46 +25,35 @@ export default function Filter() {
     router.push(`${pathname}${getQueryString()}`);
   };
 
-  const showPicker = (e: any) => {
-    e.target.showPicker();
-  };
-
   return (
     <div>
       <form
         onSubmit={handleFilterSubmit}
-        className="w-full flex justify-between items-center gap-4"
+        className="w-full flex items-center gap-4"
       >
-        <label htmlFor="from" className="flex-shrink-0">
-          Start Date:
-        </label>
-        <input
+        <Input
+          label="Start Date:"
           type="date"
           name="from"
           defaultValue={fromDate}
           max={toDate}
           onChange={(e) => setFromDate(e.target.value)}
-          onClick={showPicker}
-          className="cursor-pointer w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          direction="row"
+          className="cursor-pointer"
         />
-        <label htmlFor="to" className="flex-shrink-0">
-          End Date:
-        </label>
-        <input
+
+        <Input
+          label="End Date:"
           type="date"
           name="to"
           defaultValue={toDate}
           min={fromDate}
           onChange={(e) => setToDate(e.target.value)}
-          onClick={showPicker}
-          className="cursor-pointer w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          direction="row"
+          className="cursor-pointer"
         />
-        <button
-          type="submit"
-          className="flex-shrink-0 px-4 py-2 bg-gray-200 hover:bg-gray-300 transition-colors rounded cursor-pointer"
-        >
-          Apply Filter
-        </button>
+
+        <Button type="submit">Apply Filter</Button>
       </form>
     </div>
   );

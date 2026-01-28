@@ -2,6 +2,7 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { debounce } from "@/lib/utils/debounce";
+import { Input } from "./form";
 
 export default function SearchBar() {
   const router = useRouter();
@@ -29,11 +30,11 @@ export default function SearchBar() {
 
   return (
     <div className="w-full" onChange={onChange}>
-      <input
+      <Input
         type="text"
         placeholder="Search events..."
         defaultValue={searchParams.get("query") || ""}
-        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full"
       />
     </div>
   );

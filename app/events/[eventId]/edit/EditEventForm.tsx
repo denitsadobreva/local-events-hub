@@ -2,7 +2,7 @@
 
 import { useForm } from "react-hook-form";
 import { editEvent } from "@/actions/events";
-import { Button } from "@/components/form";
+import { Button, Input, Textarea } from "@/components/form";
 
 type FormValues = {
   title: string;
@@ -36,34 +36,27 @@ export default function EditEventForm({ eventId, defaultValues }: Props) {
       onSubmit={handleSubmit(onSubmit)}
       className="flex flex-col gap-6 max-w-md w-full p-8 border border-gray-300 bg-white shadow-lg rounded-xl"
     >
-      <div className="flex flex-col">
-        <label className="text-sm text-gray-600">Title</label>
-        <input
-          {...register("title", { required: "Title is required" })}
-          className="rounded-md px-3 py-1.5 outline-1 outline-gray-300 text-gray-900 mt-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-        />
+      <Input
+        label="Title"
+        {...register("title", { required: "Title is required" })}
+        className="rounded-md px-3 py-1.5 outline-1 outline-gray-300 text-gray-900 mt-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+      >
         {errors.title && (
           <span className="text-red-500 text-sm">{errors.title.message}</span>
         )}
-      </div>
+      </Input>
 
-      <div className="flex flex-col">
-        <label className="text-sm text-gray-600">Description</label>
-        <textarea
-          {...register("description")}
-          className="rounded-md px-3 py-1.5 outline-1 outline-gray-300 text-gray-900 mt-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-        />
-      </div>
+      <Textarea
+        label="Description"
+        {...register("description", { required: true })}
+      />
 
-      <div className="flex flex-col">
-        <label className="text-sm text-gray-600">Event Date</label>
-        <input
-          type="date"
-          {...register("eventDate", { required: true })}
-          className="rounded-md px-3 py-1.5 outline-1 outline-gray-300 text-gray-900 mt-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-          onFocus={(e) => e.currentTarget.showPicker?.()}
-        />
-      </div>
+      <Input
+        label="Event Date"
+        type="date"
+        {...register("eventDate", { required: true })}
+        className="cursor-pointer"
+      />
 
       <Button type="submit" disabled={isSubmitting} variant="confirm">
         Save Changes
