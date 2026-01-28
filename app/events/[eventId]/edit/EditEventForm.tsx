@@ -2,6 +2,7 @@
 
 import { useForm } from "react-hook-form";
 import { editEvent } from "@/actions/events";
+import { Button } from "@/components/form";
 
 type FormValues = {
   title: string;
@@ -64,13 +65,9 @@ export default function EditEventForm({ eventId, defaultValues }: Props) {
         />
       </div>
 
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 cursor-pointer"
-      >
+      <Button type="submit" disabled={isSubmitting} variant="confirm">
         Save Changes
-      </button>
+      </Button>
     </form>
   );
 }

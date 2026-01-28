@@ -1,4 +1,5 @@
 import { addNewEvent } from "@/actions/events";
+import { Button } from "@/components/form";
 
 export default async function NewEventPage() {
   return (
@@ -43,12 +44,9 @@ export default async function NewEventPage() {
             className="rounded-md px-3 py-1.5 outline-1 outline-gray-300 text-gray-900 mt-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
           />
         </div>
-        <button
-          type="submit"
-          className="cursor-pointer mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors duration-200 "
-        >
+        <Button type="submit" variant="primary">
           Add Event
-        </button>
+        </Button>
       </form>
     </div>
   );

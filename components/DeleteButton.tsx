@@ -2,18 +2,16 @@
 
 import { useState } from "react";
 import { deleteEvent } from "@/actions/events";
+import { Button } from "@/components/form";
 
 export default function DeleteButton({ eventId }: { eventId: string }) {
   const [open, setOpen] = useState(false);
 
   return (
     <>
-      <button
-        onClick={() => setOpen(true)}
-        className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 cursor-pointer transition-colors"
-      >
+      <Button onClick={() => setOpen(true)} variant="danger">
         Delete Event
-      </button>
+      </Button>
 
       {open && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
@@ -23,21 +21,13 @@ export default function DeleteButton({ eventId }: { eventId: string }) {
             </h2>
 
             <div className="flex justify-end gap-4">
-              <button
-                onClick={() => setOpen(false)}
-                className="px-4 py-2 bg-gray-200 hover:bg-gray-300 transition-colors rounded cursor-pointer"
-              >
-                Cancel
-              </button>
+              <Button onClick={() => setOpen(false)}>Cancel</Button>
 
               <form action={deleteEvent}>
                 <input type="hidden" name="eventId" value={eventId} />
-                <button
-                  type="submit"
-                  className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 cursor-pointer transition-colors"
-                >
+                <Button type="submit" variant="danger">
                   Delete
-                </button>
+                </Button>
               </form>
             </div>
           </div>
