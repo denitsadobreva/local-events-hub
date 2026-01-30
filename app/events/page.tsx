@@ -1,4 +1,5 @@
 import EventsClient from "./EventsClient";
+import EventsHeader from "./EventsHeader";
 
 export default async function EventsPage({
   params,
@@ -17,5 +18,10 @@ export default async function EventsPage({
     searchParams,
   ]);
 
-  return <EventsClient searchParams={resolvedSearch} />;
+  return (
+    <div className="mx-auto max-w-7xl px-6 py-8 flex flex-col gap-6 justify-center items-center">
+      <EventsHeader />
+      <EventsClient searchParams={resolvedSearch} />
+    </div>
+  );
 }
