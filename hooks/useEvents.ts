@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { EVENTS_PER_PAGE } from "@/lib/config/constants";
+import { Event } from "@/lib/types";
 
 type Filters = {
   query?: string;
@@ -11,7 +12,7 @@ type Filters = {
 };
 
 export function useEvents(filters: Filters) {
-  const [events, setEvents] = useState<any[]>([]);
+  const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
 
   const currentPage = filters.page ?? 1;
