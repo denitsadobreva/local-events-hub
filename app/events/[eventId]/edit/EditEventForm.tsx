@@ -3,6 +3,8 @@
 import { useForm } from "react-hook-form";
 import { editEvent } from "@/actions/events";
 import { Button, Input, Textarea } from "@/components/form";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 type FormValues = {
   title: string;
@@ -16,6 +18,8 @@ type Props = {
 };
 
 export default function EditEventForm({ eventId, defaultValues }: Props) {
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -25,10 +29,17 @@ export default function EditEventForm({ eventId, defaultValues }: Props) {
   });
 
   const onSubmit = async (data: FormValues) => {
-    await editEvent({
+    const result = await editEvent({
       eventId,
       ...data,
     });
+
+    if (result.ok) {
+      toast.success(result.message);
+      router.push(`/events/${eventId}`);
+    } else {
+      toast.error(result.message);
+    }
   };
 
   return (

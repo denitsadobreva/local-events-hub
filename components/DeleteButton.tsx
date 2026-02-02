@@ -3,9 +3,23 @@
 import { useState } from "react";
 import { deleteEvent } from "@/actions/events";
 import { Button } from "@/components/form";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 export default function DeleteButton({ eventId }: { eventId: string }) {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
+
+  const onDelete = async () => {
+    const result = await deleteEvent({ eventId });
+
+    if (result.ok) {
+      toast.success(result.message);
+      router.push("/events");
+    } else {
+      toast.error(result.message);
+    }
+  };
 
   return (
     <>
@@ -22,13 +36,9 @@ export default function DeleteButton({ eventId }: { eventId: string }) {
 
             <div className="flex justify-end gap-4">
               <Button onClick={() => setOpen(false)}>Cancel</Button>
-
-              <form action={deleteEvent}>
-                <input type="hidden" name="eventId" value={eventId} />
-                <Button type="submit" variant="danger">
-                  Delete
-                </Button>
-              </form>
+              <Button onClick={onDelete} variant="danger">
+                Delete
+              </Button>
             </div>
           </div>
         </div>

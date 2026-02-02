@@ -1,5 +1,5 @@
 "use server";
-import { redirect } from "next/navigation";
+
 import { createEvent, updateEvent, deleteEventById } from "@/lib/db/events";
 
 type EditEventInput = {
@@ -15,25 +15,32 @@ export async function addNewEvent(formData: FormData) {
   const eventDate = formData.get("eventDate") as string;
 
   const newEvent = await createEvent(title, description, eventDate);
-  if (newEvent == null) {
-    throw new Error("Failed to add new event");
-  } else {
-    console.log("New event added:", newEvent);
-    redirect("/events");
+
+  if (!newEvent) {
+    return { ok: false, message: "Failed to add new event" };
   }
+
+  return { ok: true, message: "Event created successfully" };
 }
 
-export async function deleteEvent(formData: FormData) {
-  const eventId = formData.get("eventId") as string;
+export async function deleteEvent({ eventId }: { eventId: string }) {
   await deleteEventById(eventId);
-
-  redirect("/events");
+  return { ok: true, message: "Event deleted" };
 }
 
 export async function editEvent(data: EditEventInput) {
-  const { eventId, ...rest } = data;
-  const { title, description, eventDate } = rest;
+  const { eventId, title, description, eventDate } = data;
 
-  await updateEvent(eventId, title, description, eventDate);
-  redirect(`/events/${eventId}`);
+  const updatedEvent = await updateEvent(
+    eventId,
+    title,
+    description,
+    eventDate,
+  );
+
+  if (!updatedEvent) {
+    return { ok: false, message: "Failed to update event" };
+  }
+
+  return { ok: true, message: "Event updated successfully" };
 }
