@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { EVENTS_PER_PAGE } from "@/lib/core";
 import { Event } from "@/lib/core";
+import { fetchEvents } from "@/lib/services/events.api";
 
 type Filters = {
   query?: string;
@@ -18,16 +19,9 @@ export function useEvents(filters: Filters) {
   const currentPage = filters.page ?? 1;
 
   useEffect(() => {
-    const params = new URLSearchParams();
-
-    if (filters.query) params.set("query", filters.query);
-    if (filters.from) params.set("from", filters.from);
-    if (filters.to) params.set("to", filters.to);
-
     setLoading(true);
 
-    fetch(`/api/events?${params.toString()}`)
-      .then((res) => res.json())
+    fetchEvents(filters)
       .then(setEvents)
       .finally(() => setLoading(false));
   }, [filters.query, filters.from, filters.to]);
