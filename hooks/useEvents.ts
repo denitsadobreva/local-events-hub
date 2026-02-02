@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { EVENTS_PER_PAGE } from "@/lib/config/constants";
-import { Event } from "@/lib/types";
+import { EVENTS_PER_PAGE } from "@/lib/core";
+import { Event } from "@/lib/core";
 
 type Filters = {
   query?: string;

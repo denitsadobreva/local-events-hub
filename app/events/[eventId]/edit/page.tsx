@@ -1,6 +1,6 @@
 import { getEventById } from "@/lib/db/events";
 import EditEventForm from "./EditEventForm";
-import { parseId } from "@/lib/utils";
+import { parseId } from "@/lib/core";
 
 export default async function EditPage({
   params,

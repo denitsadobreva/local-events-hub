@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { debounce } from "@/lib/utils/debounce";
+import { debounce } from "@/lib/core";
 import { Input } from "./form";
 
 export default function SearchBar() {

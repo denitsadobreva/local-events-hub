@@ -2,7 +2,7 @@ export const runtime = "nodejs";
 import Link from "next/link";
 import DeleteButton from "@/components/DeleteButton";
 import { getEventById } from "@/lib/db/events";
-import { parseId } from "@/lib/utils";
+import { parseId } from "@/lib/core";
 
 type EventPageProps = {
   params: Promise<{ eventId: string }>;
